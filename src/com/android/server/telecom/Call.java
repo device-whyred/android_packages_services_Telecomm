@@ -367,8 +367,6 @@ public class Call implements CreateConnectionResponse, EventManager.Loggable,
 
     private boolean mIsDisconnectingChildCall = false;
 
-    private boolean mIsChildCall = false;
-
     /**
      * Tracks the video states which were applicable over the duration of a call.
      * See {@link VideoProfile} for a list of valid video states.
@@ -1934,11 +1932,6 @@ public class Call implements CreateConnectionResponse, EventManager.Loggable,
         return mIsDisconnectingChildCall;
     }
 
-    public boolean isChildCall() {
-        return mIsChildCall;
-    }
-
-
     /**
      * Sets whether this call is a child call.
      */
@@ -2986,7 +2979,6 @@ public class Call implements CreateConnectionResponse, EventManager.Loggable,
     public void setChildOf(Call parentCall) {
         if (parentCall != null && !parentCall.getChildCalls().contains(this)) {
             parentCall.addChildCall(this);
-            mIsChildCall = true;
         }
     }
 
